@@ -1,0 +1,89 @@
+#====================================================
+#	Materials types, properties, phases
+#----------------------------------------------------
+# Number of phases
+N_phases	2
+
+# System size
+CellDim		64 64 64
+
+# Data file of initial microstructure
+initial_ms		mesh_64_rand_125.txt
+
+# Type of phase-1 and phase-2 (in accordance with the following order)
+# 0(xtal) 1(gas)
+Type_phases		0  1	
+
+# Elastic constants of phase 1: c11, c12, c44, nu
+# Copper, in MPa
+ElastConst_PhaseI	169665.	122500.	75827.	0.35
+
+# Data file containing info of phase 1
+Slip_PhaseI		Cu_p.sx
+
+# Elastic constants of phase 2: c11, c12, c44, nu
+# Gas, ignored!
+ElastConst_PhaseII	0.0	0.0	0.0	0.0
+
+# Data file containing info of phase 2
+Slip_PhaseII	XXXXX
+
+#====================================================
+#	Boundary conditions
+#----------------------------------------------------
+# Flags for velocity gradient (0:unknown, 1:known) Voigt notation
+VelGrad_BC_Flag		0 0 1 1 1 1
+
+# Velocity gradient
+VelGrad_BC		-0.5E-3 -0.5E-3 1.0E-3 0.0 0.0 0.0
+
+# Flags for Cauchy stress
+Stress_BC_Flag		1 1 0 0 0 0
+
+# Applied Cauchy stress
+Stress_BC	0. 0. 0. 0. 0. 0.
+
+#====================================================
+#	Simulation setup
+#----------------------------------------------------
+# Time increment
+TimeStep	0.1
+
+# Total simulation steps
+N_steps		4000
+
+# Error tolerance
+Err		5E-5
+
+# Maximum iteration steps allowed to solve micromechanical problem
+IterMax		200
+
+# write fields?(0:No, 1:Yes)	write step interval
+PrintControl	1	1000
+
+# Update texture flag
+Update_Flag		1
+
+# Hardening flag
+Hard_Flag		1
+
+# Texture output flag
+Tex_Flag		1
+
+#self latent hardening coeffiecient
+self      1.0      0.0
+
+#coplanar latent hardening coefficient
+coplane   1.0      0.0 
+
+#collinear latent hardening coefficient
+cross     1.0      0.0
+
+#glissile latent hardening coefficient
+glissile  1.0      0.0 
+
+#Hirth latent hardening coefficient 
+Hirth     1.0      0.0 
+
+#Lomer-Cottrell latent hardebing coefficient
+lomer     1.0      0.0 
